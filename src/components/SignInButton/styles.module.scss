@@ -13,6 +13,13 @@
   font-weight: bold;
   transition: filter 0.2s;
 
+  img {
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 3rem;
+  }
+
   svg {
     width: 20px;
     height: 20px;
