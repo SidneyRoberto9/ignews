@@ -1,37 +1,119 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center" id="top"> 
+ 
+  &#xa0;
 
-## Getting Started
+  <!-- <a href="https://ignews.netlify.app">Demo</a> -->
+</div>
 
-First, run the development server:
+<h1 align="center">Ig.News || Next.js</h1>
+
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/SidneyRoberto9/ignews?color=56BEB8">
+
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/SidneyRoberto9/ignews?color=56BEB8">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/SidneyRoberto9/ignews?color=56BEB8">
+
+  <img alt="License" src="https://img.shields.io/github/license/SidneyRoberto9/ignews?color=56BEB8">
+
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/ignews?color=56BEB8" /> -->
+
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/ignews?color=56BEB8" /> -->
+
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/ignews?color=56BEB8" /> -->
+</p>
+
+<!-- Status -->
+
+<!-- <h4 align="center">
+	🚧  Ignews 🚀 Under construction...  🚧
+</h4>
+
+<hr> -->
+
+<p align="center">
+  <a href="#dart-about">Sobre</a> &#xa0; | &#xa0; 
+  <!-- <a href="#sparkles-features">Features</a> &#xa0; | &#xa0; -->
+  <a href="#rocket-technologies">Tecnologias</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requisitos</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Iniciando o Projeto</a> &#xa0; | &#xa0;
+  <a href="#memo-license">licensa</a> &#xa0; | &#xa0;
+  <a href="https://github.com/SidneyRoberto9" target="_blank">Autor</a>
+</p>
+
+<br>
+
+## :dart: Sobre
+
+O projeto tem como objetivo o estudo e desenvolvimento de uma aplicação em ReactJS com NextJS para listagem de posts e sistema de inscrição(subscription).
+
+A aplicação foi desenvolvida utilizando o framework NextJS aplicando conceitos como consumo de API externas, API Root, Server Side Rendering (SSR), Static Site Generation (SSG), STRIPE para pagamentos das subscriptions, NextAuth para autenticação com Github, FaunaDB para armazenar as informações do usuário em um banco de dados e Prismic CMS para adição e gerenciamento do conteúdo dos posts.
+
+O projeto foi desenvolvido como pratica das aulas do modulo 03 do Ignite da Rocketseat
+
+<!-- ## :sparkles: Features
+
+:heavy_check_mark: Feature 1;\
+:heavy_check_mark: Feature 2;\
+:heavy_check_mark: Feature 3; -->
+
+## :rocket: Tecnologias
+
+Abaixo as tecnologias utilizadas para construção da aplicação
+
+- [ReactJS](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SASS](https://sass-lang.com/)
+- [Next-Auth](https://next-auth.js.org/)
+- [Stripe](https://stripe.com/)
+- [FaunaDB](https://fauna.com/)
+- [Prismic CMS](https://prismic.io/)
+
+## :white_check_mark: Requisitos
+
+Necessário realizar as instalações:
+
+- [Git](https://git-scm.com/)
+- [Yarn](https://classic.yarnpkg.com)
+- [Stripe CLI](https://stripe.com/docs/stripe-cli)
+
+Criar conta e configurar os serviços externos:
+
+- [Stripe](https://stripe.com/)
+- [FaunaDB](https://fauna.com/)
+- [Prismic CMS](https://prismic.io/)
+
+## :checkered_flag: Iniciando o Projeto
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Execute o comando git clone para realizar o clone do repositório
+$ git clone https://github.com/SidneyRoberto9/ignews.git
+# Entre na pasta do repositório clonado
+$ cd ignews
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Iniciando o projeto**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+# Execute yarn para instalar as dependências
+$ yarn
+# Na raiz do projeto crie um arquivo .env.local.example
+# Altere o nome da copia para .env.local
+# Preencha as variáveis ambiente de acordo com as instruções
+$ cp .env.local.example .env.local
+# Execute stripe listen para ouvir eventos do webhook
+$ stripe listen --forward-to localhost:3000/api/webhooks
+# Para iniciar a aplicação
+$ yarn dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## :memo: Licensa
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Distribuído sob a licença MIT. Veja [LICENSE](LICENSE) para mais informações.
 
-## Learn More
+Feito com :heart: by <a href="https://github.com/SidneyRoberto9" target="_blank">Sidney Roberto</a>
 
-To learn more about Next.js, take a look at the following resources:
+&#xa0;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-// command for lister
-stripe listen --forward-to localhost:3000/api/webhooks
+<a href="#top">De Volta ao Topo</a>
