@@ -26,7 +26,10 @@ const relevantEvents = new Set([
   "customer.subscription.deleted",
 ]);
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function webhooks(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method == "POST") {
     const buf = await buffer(req);
     const secret = req.headers["stripe-signature"];
@@ -84,4 +87,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Allow", "POST");
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-};
+}

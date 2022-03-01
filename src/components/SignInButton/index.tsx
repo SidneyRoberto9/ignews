@@ -13,7 +13,7 @@ export function SignInButton() {
       type="button"
       onClick={() => signOut()}
     >
-      <img src={session.user.image} alt="github user image" />
+      <img src={session.user.image} width="20" alt="github user image" />
       {session.user.name}
       <FiX color="#737380" className={styles.closeIcon} />
     </button>

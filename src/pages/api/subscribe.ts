@@ -13,7 +13,10 @@ type User = {
   };
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function subscribe(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method == "POST") {
     const session = await getSession({ req });
 
@@ -56,4 +59,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Allow", "POST");
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-};
+}
