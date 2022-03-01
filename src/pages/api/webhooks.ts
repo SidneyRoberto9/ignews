@@ -22,7 +22,7 @@ export const config = {
 
 const relevantEvents = new Set([
   "checkout.session.completed",
-  "customer.subscription.update",
+  "customer.subscription.updated",
   "customer.subscription.deleted",
 ]);
 
@@ -51,7 +51,7 @@ export default async function webhooks(
     if (relevantEvents.has(type)) {
       try {
         switch (type) {
-          case "customer.subscription.update":
+          case "customer.subscription.updated":
           case "customer.subscription.deleted":
             const subscription = event.data.object as Stripe.Subscription;
 
