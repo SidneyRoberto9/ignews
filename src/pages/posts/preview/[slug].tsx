@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
@@ -17,13 +17,6 @@ interface PostPreviewProps {
     updatedAt: string;
   };
 }
-
-export const getStaticPaths = () => {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-};
 
 export default function PostPreview({ post }: PostPreviewProps) {
   const { data: session } = useSession();
@@ -61,6 +54,13 @@ export default function PostPreview({ post }: PostPreviewProps) {
   );
 }
 
+export const getStaticPaths: GetStaticPaths = () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+};
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params;
 
@@ -86,5 +86,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post,
     },
+    revalidate: 60 * 30,
   };
 };
