@@ -1,5 +1,8 @@
 import Head from "next/head";
+import { GetStaticProps } from "next";
 import styles from "./styles.module.scss";
+import * as Prismic from "@prismicio/client";
+import { createClient } from "../../services/prismic";
 
 export default function Posts() {
   return (
@@ -35,3 +38,42 @@ export default function Posts() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  let prismic = createClient();
+
+  const response = await prismic.query(
+    [Prismic.predicate.at("document.type", "publication")],
+    {
+      fetch: ["publication.title", "publication.content"],
+      pageSize: 100,
+    }
+  );
+
+  console.log(response);
+
+  //   const publication = response.results.map((publi) => {
+  //     return {
+  //       slug: publi.uid,
+  //       title: RichText.asText(publi.data.title),
+  //       excerpt:
+  //       publi.data.content.find((content) => content.type === "paragraph")
+  //           ?.text ?? "",
+  //       updatedAt: new Date(publi.last_publication_date).toLocaleDateString(
+  //         "pt-BR",
+  //         {
+  //           day: "2-digit",
+  //           month: "long",
+  //           year: "numeric",
+  //         }
+  //       ),
+  //     };
+  //   });
+
+  return {
+    props: {
+      // publication,
+    },
+    revalidate: 60 * 5, // 5 minutes
+  };
+};
