@@ -1,10 +1,11 @@
-import Head from "next/head";
-import { GetStaticProps } from "next";
-import { RichText } from "prismic-dom";
-import styles from "./styles.module.scss";
-import * as Prismic from "@prismicio/client";
-import { createClient } from "../../services/prismic";
-import Link from "next/link";
+import * as Prismic from '@prismicio/client';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import { RichText } from 'prismic-dom';
+
+import { createClient } from '../../services/prismic';
+import styles from './styles.module.scss';
 
 type Post = {
   slug: string;
@@ -45,11 +46,11 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   let prismic = createClient();
 
   const response = await prismic.query(
-    [Prismic.predicate.at("document.type", "publication")],
+    [Prismic.predicate.at('document.type', 'publication')],
     {
-      fetch: ["publication.title", "publication.content"],
+      fetch: ['publication.title', 'publication.content'],
       pageSize: 100,
-    }
+    },
   );
 
   const posts = response.results.map((post) => {
@@ -57,15 +58,15 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       slug: post.uid,
       title: RichText.asText(post.data.title),
       excerpt:
-        post.data.content.find((content) => content.type === "paragraph")
-          ?.text ?? "",
+        post.data.content.find((content) => content.type === 'paragraph')
+          ?.text ?? '',
       updatedAt: new Date(post.last_publication_date).toLocaleDateString(
-        "pt-BR",
+        'pt-BR',
         {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        }
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        },
       ),
     };
   });
